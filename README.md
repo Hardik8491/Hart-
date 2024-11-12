@@ -985,6 +985,7 @@ export const StatusIcon = {
 ## <a name="links">🔗 Assets</a>
 
 Public assets used in the project can be found [here](https://drive.google.com/file/d/1yGvWFeSaH1_-aiQ1gejT23lqz5979RKB/view?usp=sharing)
+<<<<<<< HEAD
 
 ## <a name="more">🚀 More</a>
 
@@ -1011,3 +1012,5 @@ And if you're hungry for more than just a course and want to understand how we l
 #   H a r t - 
  
  
+=======
+>>>>>>> 609e382b1433a2a1aae3bfc2d94ed63b26f179dc
