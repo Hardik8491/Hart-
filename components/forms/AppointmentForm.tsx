@@ -1,4 +1,3 @@
-//@ts-nocheck
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -72,6 +71,8 @@ export const AppointmentForm = ({
     }
 
     try {
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get the user's current time zone
+
       if (type === "create" && patientId) {
         const appointment = {
           userId,
@@ -81,6 +82,7 @@ export const AppointmentForm = ({
           reason: values.reason!,
           status: status as Status,
           note: values.note,
+          timeZone, // Add the timeZone here
         };
 
         const newAppointment = await createAppointment(appointment);
@@ -102,6 +104,7 @@ export const AppointmentForm = ({
             cancellationReason: values.cancellationReason,
           },
           type,
+          timeZone, // Add the timeZone here as well
         };
 
         const updatedAppointment = await updateAppointment(appointmentToUpdate);
@@ -126,7 +129,7 @@ export const AppointmentForm = ({
       buttonLabel = "Schedule Appointment";
       break;
     default:
-      buttonLabel = "Submit Apppointment";
+      buttonLabel = "Submit Appointment";
   }
 
   return (
@@ -183,7 +186,7 @@ export const AppointmentForm = ({
                 control={form.control}
                 name="reason"
                 label="Appointment reason"
-                placeholder="Annual montly check-up"
+                placeholder="Annual monthly check-up"
                 disabled={type === "schedule"}
               />
 
